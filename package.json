@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MARCROCK22/juniper#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "file-type": "^17.1.1"
   }
 }
