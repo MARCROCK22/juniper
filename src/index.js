@@ -1,9 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const app = require('express')();
+import fs from 'fs';
+import path from 'path';
+import express from 'express';
+const app = express();
 const PORT = process.env.PORT || 3000;
 const files = fs.readdirSync(path.join(__dirname, 'images'));
-const { fileTypeFromBuffer } = require('file-type');
+import { fileTypeFromBuffer } from 'file-type';
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
