@@ -3,6 +3,7 @@ import path from 'path';
 import express from 'express';
 const app = express();
 const PORT = process.env.PORT || 3000;
+const __dirname = path.join(process.cwd(), 'src');
 const files = fs.readdirSync(path.join(__dirname, 'images'));
 import { fileTypeFromBuffer } from 'file-type';
 
