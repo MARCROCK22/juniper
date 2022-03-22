@@ -12,20 +12,24 @@ app.listen(PORT, () => {
 });
 
 app.get('/get/:name', async (req, res) => {
-    const imageFinded = files.find(file => file.split('.')[0] === req.params.name);
-    if (!imageFinded) return res.status(404).send('Image not found');
+    const imageFinded = files.find(file =>
+        (file.split('.')[0] === req.params.name)
+        ||
+        (file === req.params.name)
+        ||
+        (file == req.params.name.split('.')[0])
+    ) || '404.png';
     const file = await fs.promises.readFile(path.join(__dirname, 'images', imageFinded))
     const m = await fileTypeFromBuffer(file).then(i => i.mime);
-    res.writeHead(200, {
+    res.writeHead(imageFinded == '404.png' ? 404 : 200, {
         "Content-Type": m,
         "Content-Length": file.length
     });
-    res.end(file);
+    res.status(imageFinded == '404.png' ? 404 : 200).end(file);
 });
 
 app.get('/random', async (req, res) => {
     const imageFinded = files[Math.floor(Math.random() * files.length)];
-    if (!imageFinded) return res.status(404).send('Image not found');
     const file = await fs.promises.readFile(path.join(__dirname, 'images', imageFinded))
     const m = await fileTypeFromBuffer(file).then(i => i.mime);
     res.writeHead(200, {
