@@ -21,11 +21,11 @@ app.get('/get/:name', async (req, res) => {
     ) || '404.png';
     const file = await fs.promises.readFile(path.join(__dirname, 'images', imageFinded))
     const m = await fileTypeFromBuffer(file).then(i => i.mime);
-    res.writeHead(imageFinded == '404.png' ? 404 : 200, {
+    res.writeHead(200, {
         "Content-Type": m,
         "Content-Length": file.length
     });
-    res.status(imageFinded == '404.png' ? 404 : 200).end(file);
+    res.status(200).end(file);
 });
 
 app.get('/random', async (req, res) => {
