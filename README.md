@@ -9,3 +9,7 @@ Juniper plushies
 https://juniper-plushes.herokuapp.com/get/<nombre>
 
 https://juniper-plushes.herokuapp.com/get/sinduda
+
+## Random
+
+https://juniper-plushes.herokuapp.com/random
